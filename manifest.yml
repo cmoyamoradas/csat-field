@@ -1,0 +1,25 @@
+modules:
+  jira:customField:
+    - key: csat-field
+      name: Customer Safisfaction
+      description: Customer Satisfaction Forge custom field
+      data:
+        type: number
+        storage:
+          issueProperty:
+            key: csatForgeCustomField
+        validation:
+          expression: value == null || (value >= 1 && value <= 5)
+          message: The value must be an integer number between 1 and 5
+      readOnly: false
+      function: main
+      edit:
+        function: edit
+  function:
+    - key: main
+      handler: index.runView
+    - key: edit
+      handler: index.runEdit
+app:
+  id: ari:cloud:ecosystem::app/7607c19d-4dc6-4c2d-b59a-ef60abefa8e8
+  name: csat-field
